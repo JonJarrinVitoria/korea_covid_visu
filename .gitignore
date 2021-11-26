@@ -1,0 +1,12 @@
+*.docx
+*.csv
+*.ipynb_checkpoints/
+datos/
+kanban/
+informe/
+*.pkl
+*.h5
+*__pycache__/
+*.pdf
+*output_modelos/
+*gestion_proyecto/
