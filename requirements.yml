@@ -5,7 +5,7 @@ channels:
   - dglteam
   - conda-forge
   - defaults
-dependencies:
+dependencies:   
   - _tflow_select=2.3.0=eigen
   - absl-py=1.0.0=pyhd8ed1ab_0
   - aiohttp=3.7.0=py38h1e8a9f7_0
