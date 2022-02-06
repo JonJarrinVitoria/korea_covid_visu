@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang = "en">
+    <head>
+        <meta charset="utf-8">
+        <meta name = "viewport"    content = "width = device-width, initial-scale = 1">
+        <meta name = "description" content = "Proyecto del equipo rojo para la empresa Lookiero">
+        <meta name = "author"      content = "Equipo rojo">
+        
+        <title>Reto 10 rojo - Visión global</title>
+
+        <!-- Bootstrap core CSS -->
+        <link href = "../static/bootstrap.min.css" rel = "stylesheet">
+
+        <!-- Añadimos los stilos que vamos a usar -->
+        <link href = "../static/estilo_paginas.css" rel = "stylesheet"> 
+
+        <!-- d3 -->
+        <script src="https://d3js.org/d3.v4.js"></script>
+    
+        <!-- Plotly.js -->
+        <script src = "https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    </head>
+    <body>
+        <main>
+            <!-- NAVEGADOR -->
+            <nav class="navbar navbar-expand-md navbar-light" style = "padding: 0%">
+
+                <form action="http://localhost:5000/navegador" method = "POST" class = "out_nav">
+                    <!-- LOGO LOOKIERO -->
+                    <a class="navbar-brand" href = "#"><img src = "../static/img/logo_img.png" alt = "Logo" class = "Logo"></a>
+                    
+                    <!-- BOTON AL COLAPSAR -->
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#enlace-para-icono" aria-controls="enlace-para-icono" aria-expanded="false" aria-label=""><span class="navbar-toggler-icon"></span></button>
+                    
+                    <!-- PESTAÑAS DEL NAVEGADOR -->
+                    <div class = "collapse navbar-collapse flex-row-reverse" id="enlace-para-icono">
+                        <div class = "nav"  id="enlace-para-icono">
+                            <ol class = "navbar-nav">
+                                <li style = 'background: rgb(255, 217, 199); border-color: rgb(255, 217, 199);' class="nav-item"><input style = ' border-style:none; background: rgb(255, 217, 199); border-color: rgb(255, 217, 199); color: rgb(255, 217, 199);' type = "submit" style = 'font-size: 80%;' name = 'boton_nav' value = "Contexto empresarial" ></li>
+                                <li style = 'background: rgb(255, 217, 199); border-color: rgb(255, 217, 199);' class="nav-item"><input style = ' border-style:none; background: rgb(255, 217, 199); border-color: rgb(255, 217, 199); color: rgb(255, 217, 199);' type = "submit" style = 'font-size: 80%;' name = 'boton_nav' value = "Contexto empresarial" ></li>
+                                
+                                <li class="nav-item active"><input type = "submit" style = 'font-size: 80%;' name = 'boton_nav' value = "Portada" ></li>
+                                <li class="nav-item active"><input type = "submit" style = 'font-size: 80%;' name = 'boton_nav' value = "Visión global" ></li>
+                                <li class="nav-item active"><input type = "submit" style = 'font-size: 80%;' name = 'boton_nav' value = "Contexto empresarial" ></li>
+                                <li class="nav-item active"><input type = "submit" style = 'font-size: 80%;' name = 'boton_nav' value = "Grafos y looks" ></li>
+                            </ol>
+                        </div>
+                    </div>
+                </form>
+            </nav>
+
+            <!-- DESCRIPCIÓN PESTAÑA -->
+            <div class = "descripcion" style = 'width: 100%;'>
+                <div class = 'container'>
+                    <div class="col-12" style = "padding-left: 0px;">
+                        <h3 style = 'color: #6d6865;'>CONTEXTO EMPRESARIAL</h3>
+                        <p  style = 'color: #6d6865;'>Esta pestaña trata del estado de la empresa de cara al mercado, analizando diferentes indiciadores como las ventas por producto, de éstas cuáles han sido vendidas, o simplemente no se han enviado.</p>
+                    </div>
+                </div>
+            </div>      
+
+
+            <div class = "container" style="padding-top: 170px;">
+                <!-- GRAFICOS ENVÍOS-VENTAS -->
+                <p class = 'titulos-h2'>RELACIÓN ENVÍO-VENTAS</p>
+                <div class = "row mb-3 contenedor-grande">
+                    <div id = 'scatter_linea'             class = "col-12 col-lg-6 graficos-pop"></div>
+                    <div id = 'heat_tasa_aceptacion_6'    class = "col-12 col-lg-6 graficos-pop"></div>
+                    <div class = 'row'>
+                        <div id = 'no_enviados_por_familia_1' class = "col-12 graficos-pop" style = "height: 350px; padding: 0px;"></div>
+                    </div>
+                </div>
+                <hr class="my-4">
+
+                <!-- REGLAS DE GRAFO -->
+                <p class = 'titulos-h2'>CATEGORÍAS Y LÍNEAS DEFINIDAS</p>
+                <div class = 'contenedor-grande' style = 'padding-bottom: 1px; text-align: center;'>
+                    <img src="/static/iconos/categoria_linea.png" style = 'padding: 10px; width: 100%; height: 80%;'>
+                </div>
+                
+                <hr class="my-4">
+
+                <!-- GRÁFICOS BEST-SELLER -->
+                <p class = 'titulos-h2'>BEST SELLERS</p>
+                <div class = "row mb-3 contenedor-grande">
+                    <div id  = 'arana' class = "col-12 col-lg-6 pie_arana" style = 'height: 500px;'></div>
+                    <div id = 'heat_contribucion_ventas' class = "col-12 col-lg-6 graficos-pop" style = "text-align: center;">
+                        <br>
+                        <p>Complementos más vendidos</p> 
+                        <br>
+                        <img src="/static/iconos/complementos.png" alt="Complementos" height = "300" width = '450' style = 'width: 100%; height: 80%;'>
+                    </div>
+                    <div id = 'best_sellers_8' class = "col-12 graficos-pop"></div>
+                </div>
+            </div>
+        </main>
+        <!-- FOOTER -->
+        <footer class = "pagina-footer">
+            <img src="../static/iconos/GitHub_logo.png" width = "50" height = "50" style = "display: inline-block; vertical-align: middle;">
+            <p style = 'color:#6d6865;'>Más información sobre el proyecto en: <a href = "https://github.com/DanielPuentee/reto10_rojo" style = 'display: inline-block; vertical-align: middle; color:#6d6865;'>Proyecto Lookiero Equipo Rojo</a></p>
+        </footer>
+
+        <!-- BOOTSTRAP -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="../static/js/bootstrap_js/bootstrap.min.js"></script>
+
+        <script src = '/static/js/heat_tasa_aceptacion_11.js'></script>
+        <script src = '/static/js/scatter_linea12.js'></script>
+        <script src = '/static/js/no_enviados_por_familia_11.js'></script>
+        
+
+        <script src = '/static/js/arana4.js'></script>
+        <script src = '/static/js/best_sellers_11.js'></script>
+    </body>
+</html>

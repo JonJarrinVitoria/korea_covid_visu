@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <meta charset = "utf-8">    
+    <link rel = "stylesheet" href="../static/portada.css">
+    <link href = "../static/bootstrap.min.css" rel = "stylesheet">
+    <script src="https://kit.fontawesome.com/e391148ed7.js" crossorigin="anonymous"></script>
+    <title> Reto 10 rojo - portada</title>    
+    <body>           
+        <div class ="container" style = 'margin-top: 75px;'>
+            <div class="row contenedor">                    
+                <!-- IZQUIERDAA -->
+                <div class = "col-lg-7 izq" style = 'height: 900px;'>
+                    <img src="/static/img/foto_portada.jpg">
+                </div>
+                
+                <!-- DERECHA -->
+                <div class = "col-lg-5 der" style = 'height: 900px;'>
+                    <div class = 'dentro-der' style = "height: 35%;">
+                        <img src = "../static/img/logo_img.png" alt = "Logo" height = "150" width = "375" style = "margin-top: 100px;"> 
+                    </div>
+                    <div class = 'dentro-der' style = "height: 65%;">
+                        <h3 style = "padding-top: 50px;"><u>Equipo Rojo</u></h3>
+                        <h4 style = "padding-top: 60px;">Objetivo:</h4>
+                        <h5 style = "padding-top: 20px;">Creación de looks mediante grafos</h5>
+                        <img src = "../static/iconos/grafo2.png" alt = "Grafo" height="170" width="160" style = 'padding-top: 30px;'> 
+                        <div style = "padding-top: 50px;">
+
+                            <!-- BOTONES -->
+                            <form action="http://localhost:5000/navegador" method = "POST">
+                                <input class = 'botoia' type = "submit" style = 'font-size: 80%;' name = 'boton_nav' value = "Visión global" >
+                                <input class = 'botoia' type = "submit" style = 'font-size: 80%;' name = 'boton_nav' value = "Contexto empresarial" >
+                                <input class = 'botoia' type = "submit" style = 'font-size: 80%;' name = 'boton_nav' value = "Grafos y looks" >
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+

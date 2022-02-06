@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+*{
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lucida Sans Light', 'Times New Roman', Serif;
+}
+
+body{overflow-x: hidden;}
+header{
+    position: absolute;
+    left: 1%; top: 1.5%;
+}
+
+/* CAJAS */
+.contenedor{
+    text-align: center;
+    display: flex;
+    width: 100%;
+}
+.der{
+    background-color: rgb(255, 217, 199);
+    width: 50%;
+    display: inline-block;
+    text-align: center;
+}
+.dentro-der{
+    width: 100%;
+    color: rgb(141, 134, 131);
+}
+.dentro-der *{
+    padding: 10px;
+}
+.izq{
+    background-color: rgb(213, 205, 202);
+    width: 50%;
+    display: inline-block;
+    height: 800px; 
+}
+.izq img{
+    width: 100%; height: 100%;
+    object-fit: contain;
+    padding-left: 0px; padding-right: 0px;
+}
+
+/* BOTONES */
+.botoia {
+    -moz-border-radius: 8;
+    border-radius: 8px;
+    font-family: Arial;
+    color: rgb(213, 205, 202);
+    font-size: 13px;
+    background: #7a7471;
+    padding: 8px 15px 8px 15px;
+    border: solid #d5ceca 1px;
+    text-decoration: none;
+  }
+.botoia:hover {
+    background: #d5ceca;
+    color: #7a7471;
+    text-decoration: none;
+  }

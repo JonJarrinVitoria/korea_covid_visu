@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang = "en">
+    <head>
+        <meta charset="utf-8">
+        <meta name = "viewport"    content = "width = device-width, initial-scale = 1">
+        <meta name = "description" content = "Proyecto del equipo rojo para la empresa Lookiero">
+        <meta name = "author"      content = "Equipo rojo">
+        
+        <title>Reto 10 rojo - Visión global</title>
+
+        <!-- Bootstrap core CSS -->
+        <link href = "../static/bootstrap.min.css" rel = "stylesheet">
+
+        <!-- Añadimos los stilos que vamos a usar -->
+        <link href = "../static/estilo_paginas.css" rel = "stylesheet"> 
+
+        <!-- d3 -->
+        <script src="https://d3js.org/d3.v4.js"></script>
+        
+        <!-- Plotly.js -->
+        <script src = "https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    </head>
+    <body>
+        <main>
+            <!-- NAVEGADOR -->
+            <nav class="navbar navbar-expand-md navbar-light" style = "padding: 0%">
+
+                <form action="http://localhost:5000/navegador" method = "POST" class = "out_nav">
+                    <!-- LOGO LOOKIERO -->
+                    <a class="navbar-brand" href = "#"><img src = "../static/img/logo_img.png" alt = "Logo" class = "Logo"></a>
+                    
+                    <!-- BOTON AL COLAPSAR -->
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#enlace-para-icono" aria-controls="enlace-para-icono" aria-expanded="false" aria-label=""><span class="navbar-toggler-icon"></span></button>
+                    
+                    <!-- PESTAÑAS DEL NAVEGADOR -->
+                    <div class = "collapse navbar-collapse flex-row-reverse" id="enlace-para-icono">
+                        <div class = "nav"  id="enlace-para-icono">
+                            <ol class = "navbar-nav">
+                                <li style = 'background: rgb(255, 217, 199); border-color: rgb(255, 217, 199);' class="nav-item"><input style = ' border-style:none; background: rgb(255, 217, 199); border-color: rgb(255, 217, 199); color: rgb(255, 217, 199);' type = "submit" style = 'font-size: 80%;' name = 'boton_nav' value = "Visión global" ></li>
+                                <li style = 'background: rgb(255, 217, 199); border-color: rgb(255, 217, 199);' class="nav-item"><input style = ' border-style:none; background: rgb(255, 217, 199); border-color: rgb(255, 217, 199); color: rgb(255, 217, 199);' type = "submit" style = 'font-size: 80%;' name = 'boton_nav' value = "Visión global" ></li>
+                                <li class="nav-item active"><input type = "submit" style = 'font-size: 80%;' name = 'boton_nav' value = "Portada" ></li>
+                                <li class="nav-item active"><input type = "submit" style = 'font-size: 80%;' name = 'boton_nav' value = "Visión global" ></li>
+                                <li class="nav-item active"><input type = "submit" style = 'font-size: 80%;' name = 'boton_nav' value = "Contexto empresarial" ></li>
+                                <li class="nav-item active"><input type = "submit" style = 'font-size: 80%;' name = 'boton_nav' value = "Grafos y looks" ></li>
+                            </ol>
+                        </div>
+                    </div>
+                </form>
+            </nav>
+
+            <!-- DESCRIPCIÓN PESTAÑA -->
+            <div class = "descripcion" style = 'width: 100%;'>
+                <div class = 'container'>
+                    <div class="col-12" style = "padding-left: 0px;">
+                        <h3 style = 'color: #6d6865;'>VISIÓN GLOBAL</h3>
+                        <p  style = 'color: #6d6865;'>En este apartado se detalla la descripción de la cartera de productos de la empresa, así como las diferentes reglas que se han definido para la creación del grafo.</p>
+                    </div>
+                </div>
+            </div>      
+
+
+            <div class = "container-lg" style="padding-top: 170px; padding-right: 100px; padding-left: 100px;">
+                <!-- GRAFICOS -->
+                <p class = 'titulos-h2'>POPULARIDAD</p>
+                <div class = "row mb-3 contenedor-grande">
+                    <div class = 'col-12 col-lg-7'>
+                        <div class = "row">
+                            <div id = 'barras_verticales'   class = "col-12 graficos-pop" style = 'height: 300px;'></div>
+                            <div id = 'barras_horizontales' class = "col-12 graficos-pop" style = "height: 300px;"></div>
+                        </div>
+                    </div>
+                    <div class = 'col-12 col-lg-5'>
+                        <div class = 'row'>
+                            <div class = 'col-12' style = 'height: 100px;'></div>
+                            <div id = 'pie_tallas' class = "col-12 graficos-pop" style = "height: 400px; padding-left: 0px; padding-right: 0px;"></div>
+                        </div>
+                    </div>
+                    <div class = "col-12">
+                        <div class = 'row'>
+                            <div id = 'scatter_alargado_sweeter_1'class = 'col-12' style = "height: 250px;"></div>
+                            <div id = 'scatter_alargado_tshirt_4' class = 'col-12' style = "height: 250px;"></div>
+                            <div id = 'scatter_alargado_total_1'  class = 'col-12' style = "height: 250px;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="my-4">
+
+                <!-- REGLAS DE GRAFO -->
+                <p class = 'titulos-h2'>REGLAS DEFINIDAS</p>
+                <div class = 'contenedor-grande' style = 'padding-bottom: 1px;'>
+                    <!-- REGLAS DE RELACIÓN -->
+                    <div class="row" style = 'margin-bottom: 0px;'>
+                        <h5 style = 'font-weight: lighter;'><u>Reglas de relación</u></h5>
+                        <p style = 'margin-bottom: 30px; text-align: justify;'>Las reglas de relación son las condiciones que definen si habrá una relación entre dos prendas (dos nodos). Para que se cree la relación (la arista), se tienen que cumplir las cuatro reglas que se definen a continuación:</p>
+
+                        <div class="row mb-4" style="margin-bottom: 0px;">
+                            <!-- TEMPORADA -->
+                            <div class="col-md-3">
+                            <div class="card flex-md-column mb-4 box-shadow align-items-center hovertext" data-hover = 'Todas las prendas de un look tienen que pertenecer a una misma temporada Ej: (8, 8, 8)'>
+                                <img src="../static/iconos/temporada.png" width="75" height="75">
+                                <h4 style = 'font-weight: lighter;'>Temporada</h4>
+                            </div>
+                            </div>
+        
+                            <!-- NIVEL -->
+                            <div class="col-md-3">
+                                <div class="card flex-md-column mb-4 box-shadow align-items-center hovertext" data-hover = 'Las prendas de un look tienen que pertenecer al mismo nivel Ej: (3, 3, 3)'>
+                                    <img src="../static/iconos/nivel.png" width="75" height="75">
+                                    <h4 style = 'font-weight: lighter;'>Nivel</h4>
+                                </div>
+                            </div>
+        
+                        <!-- SUBNIVEL -->
+                        <div class="col-md-3">
+                            <div class="card flex-md-column mb-4 box-shadow align-items-center hovertext" data-hover = 'En un look no puede haber subniveles repetidos a excpeción de los siguientes: (1.1 + 3.2 + 3.2), (2.1 + 3.2 + 3.2), (2.2 + 3.2 + 3.2)'>
+                                <img src="../static/iconos/subnivel.png" width="75" height="75">
+                                <h4 style = 'font-weight: lighter;'>Subnivel</h4>
+                            </div>
+                        </div>
+        
+                        <!-- TALLA -->
+                        <div class="col-md-3">
+                            <div class="card flex-md-column mb-4 box-shadow align-items-center hovertext" data-hover = 'Las prendas de un look tienen que ser de la misma talla o como mucho tiene que haber una talla de diferencia. Ej: (M, S, M)'>
+                                <img src="../static/iconos/measurement.png" width="75" height="75">
+                                <h4 style = 'font-weight: lighter;'>Talla</h4>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <!-- REGLAS DE PONDERACIÓN -->
+                    <div class="row" style = 'margin-bottom: 0px;'>
+                        <h5 style = 'font-weight: lighter;'><u>Reglas de ponderación</u></h5>
+                        <p style = 'margin-bottom: 30px; text-align: justify;'>Las reglas de ponderación, en cambio, se utilizan para definir los pesos de las aristas del grafo y estos se encuentran en un baremo de 0-1. Cada variable utilizada en este apartado (colores, estilos, estampado y premium), tendrá un máximo de un punto y al final se hará la media de todas ellas. (Ej: Color: 0.5, Estilo: 0.25, Estampado: 1, Premium: 0.25; peso final de la arista: (0.5 + 0.25 + 1 + 0.25) / 4 = 0.25)</p>
+                    
+                        <div class="row mb-4">
+                            <!-- COLORES -->
+                            <div class="col-md-3">
+                                <div class="card flex-md-column mb-4 box-shadow align-items-center otro ">
+                                    <img src="../static/iconos/color.png"  width="75" height="75">
+                                    <h4 style = 'font-weight: lighter;'>Colores</h4>
+                                    <ul class = 'aparecer'>
+                                        <li>Color + neutro = 1</li>
+                                        <li>Colores complemetarios = 0.75</li>
+                                        <li>Colores de triada = 0.5</li>
+                                        <li>Colores monocromáticos = 0.25</li>
+                                        <li>Otra relación = No hay arista</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+        
+                            <!-- ESTILO -->
+                            <div class="col-md-3">
+                                <div class="card flex-md-column mb-4 box-shadow align-items-center otro ">
+                                    <img src="../static/iconos/style.png"  width="75" height="75">
+                                    <h4 style = 'font-weight: lighter;'>Estilo</h4>
+                                    <ul class = 'aparecer'>
+                                        <li>Estilo en común = 1</li>
+                                        <li>Estilo + Casual/Minimal = 1</li>
+                                        <li>Night + Street = 0.5</li>
+                                        <li>Night + Classic = 0.25</li>
+                                        <li>Boho + Street = 0.25</li>
+                                        <li>Otra combinación = No arista</li>
+                                    </ul>
+                                </div>
+                            </div>
+        
+                        <!-- SUBNIVEL -->
+                        <div class="col-md-3">
+                            <div class="card flex-md-column mb-4 box-shadow align-items-center otro">
+                                <img src = "../static/iconos/estampado.png"  width="75" height="75">
+                                <h4 style = 'font-weight: lighter;'>Estampado</h4>
+                                <ul class = 'aparecer'>
+                                    <li>Si hay una prenda lisa o más = 1</li>
+                                    <li>Si ambas son con estampado = 0.15</li>
+                                </ul>
+                            </div>
+                        </div>
+        
+                        <!-- TALLA -->
+                        <div class="col-md-3">
+                            <div class="card flex-md-column mb-4 box-shadow align-items-center otro">
+                                <img  src = "../static/iconos/premium.png"  width="75" height="75">
+                                <h4 style = 'font-weight: lighter;' >Marca</h4>
+                                <ul class = 'aparecer'>
+                                    <li>No premium + No premium = 1</li>
+                                    <li>No premium + Premium = 0.5</li>
+                                    <li>Premium + Premium + 0.25</li>
+                                </ul>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <hr class="my-4">
+
+                <!-- GRÁFICOS TEMPORADA -->
+                <p class = 'titulos-h2'>TEMPORADA</p>
+                <div class = "row mb-3 contenedor-grande">
+                    <div id = 'heat_relacion_talla_productos_4' class = "col-12"></div>
+                    <div class = "col-12 graficos-pop">
+                        <div class = 'row'>
+                            <div id = 'pred_es21' class = "col-12 col-lg-6"></div>
+                            <div id = 'pred_put7' class = "col-12 col-lg-6"></div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- FOOTER -->
+        <footer class = "pagina-footer">
+            <img src="../static/iconos/GitHub_logo.png" width = "50" height = "50" style = "display: inline-block; vertical-align: middle;">
+            <p style = 'color:#6d6865;'>Más información sobre el proyecto en: <a href = "https://github.com/DanielPuentee/reto10_rojo" style = 'display: inline-block; vertical-align: middle; color:#6d6865;'>Proyecto Lookiero Equipo Rojo</a></p>
+        </footer>
+
+        <!-- BOOTSTRAP -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="../static/js/bootstrap_js/bootstrap.min.js"></script>
+        
+        <script src = '/static/js/barras_verticales3.js'></script>
+        <script src = '/static/js/barras_horizontales13.js'></script>
+        <script src = '/static/js/pie_talla13.js'></script>
+        <script src = '/static/js/scatter_alargado_tshirt_12.js'></script>
+        <script src = '/static/js/scatter_alargado_sweeter_12.js'></script>
+        <script src = '/static/js/scatter_alargado_total_12.js'></script>
+        
+
+        <script src = '/static/js/heat_relacion_talla_productos_9.js'></script>
+        <script src = '/static/js/pred_es15.js'></script>
+        <script src = '/static/js/pred_put10.js'></script>
+    </body>
+</html>
